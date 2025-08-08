@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Smart Home Mock</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #0e6378; /* dark teal-blue from your site */
+        color: #c2e875; /* light green text */
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #a5d47e; /* light green header */
+        padding: 1em;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .section {
+        background-color: #0e6378;
+        border: 2px solid #a5d47e;
+        border-radius: 10px;
+        margin: 20px auto;
+        padding: 20px;
+        width: 300px;
+    }
+    button {
+        background-color: #a5d47e;
+        color: #0e6378;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #c2e875;
+    }
+</style>
+</head>
+<body>
+
+<header>Smart Home Dashboard</header>
+
+<div class="section" id="lights">
+    <h2>Lights</h2>
+    <p id="lightsStatus">Off</p>
+    <button onclick="toggleLights()">Toggle Lights</button>
+</div>
+
+<div class="section" id="spotify">
+    <h2>Spotify</h2>
+    <p id="track">🎵 Song Title - Artist</p>
+    <button onclick="toggleSpotify()">Play/Pause</button>
+</div>
+
+<div class="section" id="blinds">
+    <h2>Blinds</h2>
+    <p id="blindsStatus">Closed</p>
+    <button onclick="toggleBlinds()">Toggle Blinds</button>
+</div>
+
+<div class="section" id="environment">
+    <h2>Environment</h2>
+    <p>Temperature: <span id="temp">22°C</span></p>
+    <p>Time: <span id="time"></span></p>
+    <p>Weather: <span id="weather">Sunny</span></p>
+</div>
+
+<script>
+let lightsOn = false;
+let spotifyPlaying = false;
+let blindsOpen = false;
+
+function toggleLights() {
+    lightsOn = !lightsOn;
+    document.getElementById("lightsStatus").innerText = lightsOn ? "On" : "Off";
+}
+
+function toggleSpotify() {
+    spotifyPlaying = !spotifyPlaying;
+    document.getElementById("track").innerText = spotifyPlaying ? "🎵 Playing: Chill Beats - DJ Cool" : "🎵 Paused";
+}
+
+function toggleBlinds() {
+    blindsOpen = !blindsOpen;
+    document.getElementById("blindsStatus").innerText = blindsOpen ? "Open" : "Closed";
+}
+
+function updateTime() {
+    let now = new Date();
+    document.getElementById("time").innerText = now.toLocaleTimeString();
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+</script>
+
+</body>
+</html>
